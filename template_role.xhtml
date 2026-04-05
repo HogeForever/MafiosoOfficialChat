@@ -647,7 +647,7 @@
                     </a>
                 </div>
                                
-                    <input type="submit" data-repeater-create="" class="btn btn-light-primary" value="Создать роль"/>
+                    <input type="submit" class="btn btn-light-primary" value="Создать роль"/>
  
                 </div>
             </div>
@@ -684,6 +684,53 @@
     document.getElementById("output").value=output;
     console.log(data);
     
+    var role_actions = [];
+    
+    for(var i=0;formData.get("data["+i+"][Title]");i++){
+	  role_actions.push(
+	    new MafiosoApi.RoleAction(
+          formData.get("data["+i+"][Title]"),
+          (function(name){
+			if(name == "kill") return new MafiosoApi.RoleActionTypeKill();
+			if(name == "cured") return new MafiosoApi.RoleActionTypeHealing();
+			if(name == "jamming") return new MafiosoApi.RoleActionTypeFreeze(false);
+			if(name == "force_jamming") return new MafiosoApi.RoleActionTypeFreeze(true);
+			if(name == "move") return new MafiosoApi.RoleActionTypeEmpty();
+			return null;
+		  })(formData.get("data["+i+"][TypeAction]")),
+		  formData.get("data["+i+"][is_influence_blacklist][]") == "on" ?
+		    new MafiosoApi.RoleListTypeBlackList(formData.getAll("data["+i+"][influence_roles][]").map(function(x){return parseInt(x, 10)})):
+		    new MafiosoApi.RoleListTypeWhiteList(formData.getAll("data["+i+"][influence_roles][]").map(function(x){return parseInt(x, 10)})),
+		  formData.get("data["+i+"][is_jamming_blacklist][]") == "on" ?
+		    new MafiosoApi.RoleListTypeBlackList(formData.getAll("data["+i+"][jamming_roles][]").map(function(x){return parseInt(x, 10)})):
+		    new MafiosoApi.RoleListTypeWhiteList(formData.getAll("data["+i+"][jamming_roles][]").map(function(x){return parseInt(x, 10)})),
+		  formData.get("data["+i+"][CountVictims]"),
+		  formData.get("data["+i+"][PeriodicityMoves]"),
+		  new MafiosoApi.RoleActionProcess(
+		    formData.get("data["+i+"][TextSelect]"),
+		    formData.get("data["+i+"][TextMovePrivate]"),
+		    formData.get("data["+i+"][TextMoveChat]")
+		  ),
+		  new MafiosoApi.RoleActionSuccess(
+		    (function(name){
+		      if(!name || name == "-1") return null;
+		      if(name == "-2") return new MafiosoApi.RoleSwitchToVictimRole();
+		      return new MafiosoApi.RoleSwitchToRoleId(name);
+		      
+		    })(formData.get("data["+i+"][SuccessEditRole]")),
+		    formData.get("data["+i+"][TextActionChat]"),
+		    formData.get("data["+i+"][TextSuccessTarget]"),
+		    formData.get("data["+i+"][TextSuccessActor]")
+		  ),
+		  new MafiosoApi.RoleActionFailed(
+		    formData.get("data["+i+"][TextActionChatFail]"),
+		    formData.get("data["+i+"][TextFailTarget]"),
+		    formData.get("data["+i+"][TextFailActor]")
+		  )
+        )
+      );
+    }
+    
     var role = new MafiosoApi.Role(
       new MafiosoApi.RoleName(
         formData.get("title_role"),
@@ -710,48 +757,7 @@
         formData.get("textSkipActs"),
         formData.get("messageSkipActs")
       ),
-      [
-        new MafiosoApi.RoleAction(
-          formData.get("data[0][Title]"),
-          (function(name){
-			if(name == "kill") return new MafiosoApi.RoleActionTypeKill();
-			if(name == "cured") return new MafiosoApi.RoleActionTypeHealing();
-			if(name == "jamming") return new MafiosoApi.RoleActionTypeFreeze(false);
-			if(name == "force_jamming") return new MafiosoApi.RoleActionTypeFreeze(true);
-			if(name == "move") return new MafiosoApi.RoleActionTypeEmpty();
-			return null;
-		  })(formData.get("data[0][TypeAction]")),
-		  formData.get("data[0][is_influence_blacklist][]") == "on" ?
-		    new MafiosoApi.RoleListTypeBlackList(formData.getAll("data[0][influence_roles][]").map(function(x){return parseInt(x, 10)})):
-		    new MafiosoApi.RoleListTypeWhiteList(formData.getAll("data[0][influence_roles][]").map(function(x){return parseInt(x, 10)})),
-		  formData.get("data[0][is_jamming_blacklist][]") == "on" ?
-		    new MafiosoApi.RoleListTypeBlackList(formData.getAll("data[0][jamming_roles][]").map(function(x){return parseInt(x, 10)})):
-		    new MafiosoApi.RoleListTypeWhiteList(formData.getAll("data[0][jamming_roles][]").map(function(x){return parseInt(x, 10)})),
-		  formData.get("data[0][CountVictims]"),
-		  formData.get("data[0][PeriodicityMoves]"),
-		  new MafiosoApi.RoleActionProcess(
-		    formData.get("data[0][TextSelect]"),
-		    formData.get("data[0][TextMovePrivate]"),
-		    formData.get("data[0][TextMoveChat]")
-		  ),
-		  new MafiosoApi.RoleActionSuccess(
-		    (function(name){
-		      if(!name || name == "-1") return null;
-		      if(name == "-2") return new MafiosoApi.RoleSwitchToVictimRole();
-		      return new MafiosoApi.RoleSwitchToRoleId(name);
-		      
-		    })(formData.get("data[0][SuccessEditRole]")),
-		    formData.get("data[0][TextActionChat]"),
-		    formData.get("data[0][TextSuccessTarget]"),
-		    formData.get("data[0][TextSuccessActor]")
-		  ),
-		  new MafiosoApi.RoleActionFailed(
-		    formData.get("data[0][TextActionChatFail]"),
-		    formData.get("data[0][TextFailTarget]"),
-		    formData.get("data[0][TextFailActor]")
-		  )
-        )
-      ]
+      role_actions
     );
     console.log(role);
     document.getElementById("output").value=JSON.stringify(role.toData(0), null, 2);
