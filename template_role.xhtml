@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+	<title>Role template</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700"/>
+	<link href="https://mafioso.miomoor.info/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="https://mafioso.miomoor.info/assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css"/>
+	<link href="https://mafioso.miomoor.info/assets/css/style.bundle.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body id="kt_app_body" data-kt-app-header-fixed="true" data-kt-app-header-fixed-mobile="true" data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="true" data-kt-app-sidebar-hoverable="true" data-kt-app-sidebar-push-toolbar="true" data-kt-app-sidebar-push-footer="true" data-kt-app-toolbar-enabled="true" data-kt-app-aside-enabled="true" data-kt-app-aside-fixed="true" data-kt-app-aside-push-toolbar="true" data-kt-app-aside-push-footer="true" class="app-default">
+	<form id="kt_edit_role_form" action="/edit_role" method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+      <input type="hidden" name="chat_id" value="-1001659520504"/>
+      <input type="hidden" name="edit_role" value="105"/>
+      <div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
+        <div class="card-body p-9">
+          <div class="row mb-4">
+            <label class="col-lg-4 col-form-label fw-semibold fs-6"><span class="required">Название роли</span></label>
+            <div class="col-lg-4 fv-row fv-plugins-icon-container">
+              <div class="row">
+                <div class="col-lg-6 fv-row fv-plugins-icon-container fv-plugins-bootstrap5-row-valid">
+                  <input type="text" name="emoji_role" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" id="js_role_emoji" placeholder="Эмодзи" maxlength="12" value="" />
+                  <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                </div>
+                <div class="col-lg-6 fv-row fv-plugins-icon-container">
+                  <input type="text" name="title_role" class="form-control form-control-lg form-control-solid" id="js_role_title" placeholder="Название" maxlength="30" value="" />
+                  <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <label class="col-lg-4 col-form-label fw-semibold required fs-6">Премиум-смайлик для роли
+              <span class="ms-1" data-bs-toggle="tooltip" title="Введите сюда цифровой ID премиум-смайлика. Чтобы узнать ID, напишите в личные сообщения боту команду /emoji [желаемый премиум-смайлик]. Даже если вы используете премиум-смайлик вместо обычного, указание обычного смайлика обязательно. ID состоит только из цифр. Если в ID будут не только цифры — ID не будет сохранён.">
+                <i class="ki-duotone ki-information-5 fs-6">
+                  <span class="path1"></span>
+                  <span class="path2"></span>
+                  <span class="path3"></span>
+                </i>
+              </span>
+            </label>
+            <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                <div class="row">
+                    <div class="col-lg-6 fv-row fv-plugins-icon-container fv-plugins-bootstrap5-row-valid">
+                        <input type="text" name="custom_emoji" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" id="js_role_custom_emoji" placeholder="ID премиум-смайлика" maxlength="25" value="" />
+                        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+                
+        <div class="row mb-4">
+            <label class="col-lg-4 col-form-label fw-semibold fs-6"><span class="required">Появление в начале игры (Включить роль)</span></label>
+            <div class="col-lg-8 d-flex align-items-center">
+                <div class="form-check form-check-solid form-switch form-check-custom fv-row">
+                                        <input class="form-check-input w-45px h-30px" type="checkbox" name="enableSpawn" id="enableSpawn"/>
+                    <label class="form-check-label" for="enableSpawn"></label>
+                </div>
+            </div>
+            </div>
+                <div class="row mb-6">
+            <label class="col-lg-4 col-form-label required fw-semibold fs-6">Описание</label>
+            <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                <textarea class="form-control form-control-solid" name="description" maxlength="200" data-kt-autosize="true"></textarea>
+                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+            </div>
+            </div>
+        <div class="row mb-6" data-select2-id="select2-data-372-rz5x">
+            <label class="col-lg-4 col-form-label fw-semibold required fs-6">Фракция
+                <span class="ms-1" data-bs-toggle="tooltip" title="Одиночка — роль, которая побеждает выживанием в конце игры. Одиночка-убийца — роль, которая победит при смерти всех игроков, кроме него самого.">
+                    <i class="ki-duotone ki-information-5 fs-6">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                    </i>
+                </span>
+            </label>
+            <div class="col-lg-4 fv-row fv-plugins-icon-container" data-select2-id="select2-data-371-qh3l">
+                <select class="form-select form-select-solid" name="fraction" data-control="select2" data-hide-search="true" data-placeholder="Фракция роли">
+                    <option></option>
+                    <option value="peace" selected="selected">Мирные жители</option>
+                    <option value="mafia">Мафия</option>
+                    <option value="neutral">Одиночка</option>
+                    <option value="killer">Одиночка-убийца</option>
+                </select>
+                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+            </div>
+            </div>
+        <div class="row mb-6">
+            <label class="col-lg-4 col-form-label fw-semibold required fs-6">Награда в евро за победу
+                <span class="ms-1" data-bs-toggle="tooltip" title="Средства для награды будут списаны со счёта чата. Если средств не хватит или значение не указано, будет выдана награда по умолчанию от Mafioso.">
+                    <i class="ki-duotone ki-information-5 fs-6">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                    </i>
+                </span>
+            </label>
+            <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                <div class="input-group mb-5">
+                    <span class="input-group-text" id="basic-addon1">
+                        <i><img src="https://mafioso.miomoor.info/assets/media/emoji/u1F4B6.png" width="20" height="20" class="fs-4 me-1"/><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                    </span>
+                    <input type="number" name="CashAward" value="0" class="form-control form-control-lg form-control-solid" aria-describedby="basic-addon1"/>
+                </div>
+                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+            </div>
+            </div>
+        <div class="row mb-4">
+            <label class="col-lg-4 col-form-label fw-semibold fs-6"><span class="required">Минимальное количество игроков для появления</span></label>
+                        <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                <div class="input-group mb-5">
+                    <input type="number" name="spawnCountPlayers" value="20" max="40" class="form-control form-control-lg form-control-solid" aria-describedby="basic-addon1"/>
+                </div>
+                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+            </div>
+            </div>
+        <div class="row mb-4">
+            <label class="col-lg-4 col-form-label fw-semibold required fs-6">Максимальное количество игроков для появления
+                <span class="ms-1" data-bs-toggle="tooltip" title="Если игроков будет больше указанного количества, роль не появится. Минимально возможное значение — 12. Значение 0 выключает настройку.">
+                    <i class="ki-duotone ki-information-5 fs-6">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                    </i>
+                </span>
+            </label>
+                        <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                <div class="input-group mb-5">
+                    <input type="number" name="maxSpawnCountPlayers" value="0" max="40" class="form-control form-control-lg form-control-solid" aria-describedby="basic-addon1"/>
+                </div>
+                <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+            </div>
+            </div>
+            </div>
+</div>
+
+<div class="card mb-5 mb-xl-10">
+    <div class="card-header cursor-pointer">
+        <div class="card-title m-0">
+            <h3 class="fw-bold m-0">Общая настройка дневных действий</h3>
+        </div>
+    </div>
+    <div class="collapse show">
+        <div class="card-body border-top p-9" data-select2-id="select2-data-142-5isn">
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label required fw-semibold fs-6">Вес голоса на дневном собрании</label>
+                <div class="col-lg-6 fv-row fv-plugins-icon-container">
+                    <div class="position-relative w-md-300px" data-kt-dialer="true" data-kt-dialer-min="0" data-kt-dialer-max="3" data-kt-dialer-step="1">
+                        <button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 start-0" data-kt-dialer-control="decrease">
+                            <i class="ki-duotone ki-minus-square fs-2"><span class="path1"></span><span class="path2"></span></i>
+                        </button>
+                        <input type="text" class="form-control form-control-solid border-0 ps-12" data-kt-dialer-control="input" name="countVotesDay" value="1" />
+                        <button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 end-0" data-kt-dialer-control="increase">
+                            <i class="ki-duotone ki-plus-square fs-2"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                        </button>
+                        </div>
+                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                </div>
+                </div>
+            </div>
+    </div>
+</div>
+<div class="card mb-5 mb-xl-10">
+    <div class="card-header cursor-pointer">
+        <div class="card-title m-0">
+            <h3 class="fw-bold m-0">Общая настройка ночных действий</h3>
+        </div>
+    </div>
+    <div class="collapse show">
+        <div class="card-body border-top p-9" data-select2-id="select2-data-142-5isn">
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label required fw-semibold fs-6">Текст выбора действий<span class="ms-1" data-bs-toggle="tooltip" title="Не используется в ролях, которым всегда доступно только одно действие, но всегда обязательно к заполнению">
+                    <i class="ki-duotone ki-information-5 fs-6">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                    </i></span>
+                </label>
+                <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                    <input type="text" name="textSelectActs" class="form-control form-control-lg form-control-solid" maxlength="60" placeholder="Например: Выбери, с кем пойдёшь взаимодействовать этой ночью" value="Выбери что сделаешь этой ночью!"/>
+                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                </div>
+                </div>
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label required fw-semibold fs-6">Текст пропуска действия
+                <span class="ms-1" data-bs-toggle="tooltip" title="Этот текст будет написан игроку после нажатия кнопки Отдохнуть">
+                    <i class="ki-duotone ki-information-5 fs-6">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                    </i></span>
+                </label>
+                <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                    <input type="text" name="textSkipActs" class="form-control form-control-lg form-control-solid" maxlength="60" placeholder="Например: Ты решил, что тебе лень куда-то идти!" value=""/>
+                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                </div>
+                </div>
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label required fw-semibold fs-6">Сообщение пропуска действия в игровом чате
+                <span class="ms-1" data-bs-toggle="tooltip" title="Этот текст будет отправлен в чат с игрой после нажатия кнопки Отдохнуть">
+                    <i class="ki-duotone ki-information-5 fs-6">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                    </i></span>
+                </label>
+                <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                    <input type="text" name="messageSkipActs" class="form-control form-control-lg form-control-solid" maxlength="60" placeholder="Например: {actor_role} уже устала с кем-то спать, дайте выспаться одной!" value=""/>
+                    <div class="form-text"><b>В данных сообщениях выше можно использовать следующие переменные</b><br/>
+                    {actor_role} — роль исполнителя действия<br/>
+                    {actor_username} — имя исполнителя действия</div>
+                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                </div>
+                </div>
+            <div class="row mb-4">
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Месть за убийство
+                <span class="ms-1" data-bs-toggle="tooltip" title="Если эту роль попытаются убить, она нанесёт ответный удар">
+                    <i class="ki-duotone ki-information-5 fs-6">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                    </i></span>
+                </label>
+                <div class="col-lg-4 d-flex align-items-center">
+                    <div class="form-check form-check-solid form-switch form-check-custom fv-row">
+                                                <input class="form-check-input w-45px h-30px" type="checkbox" name="revengeKill" id="revengeKill"/>
+                        <label class="form-check-label" for="revengeKill"></label>
+                    </div>
+                </div>
+                </div>
+            </div>
+    </div>
+</div>
+<style>/*<![CDATA[
+<div class="card mb-5 mb-xl-10">
+    <div class="card-header cursor-pointer">
+        <div class="card-title m-0">
+            <h3 class="fw-bold m-0">Отношения со стандартными ролями</h3>
+        </div>
+    </div>
+    <div class="collapse show">
+        <div class="card-body border-top p-9" data-select2-id="select2-data-142-5isn">
+            <div class="row mb-6" data-select2-id="select2-data-372-rz5x">
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Стандартные роли, которые НЕ работают на настраиваемую роль
+                <span class="ms-1" data-bs-toggle="tooltip" title="Проверки Комиссара и Жены Дона будут всё равно работать. Бомж и Журналист просто не будут видеть эту роль в списке посетителей.">
+                    <i class="ki-duotone ki-information-5 fs-6">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                    </i></span>
+                </label>
+                <div class="col-lg-4 fv-row fv-plugins-icon-container" data-select2-id="select2-data-371-qh3l">
+                    <select class="form-select form-select-solid" name="StandardNoInfluenceRoles[]" data-kt-repeater="select2" data-placeholder="Список ролей" data-allow-clear="true" multiple="multiple">
+                        <option></option>
+                        <option value="0">👨🏼‍🌾 Мирный житель</option><option value="1">🤵🏻‍♂️ Дон</option><option value="2">🤵🏼 Мафия</option><option value="3">🕵🏼 Комиссар</option><option value="4">👨🏼‍⚕️ Доктор</option><option value="5">💃🏼 Любовница</option><option value="6">🧙🏼‍♂️ Бомж</option><option value="7">🤦🏼‍♂️ Самоубийца</option><option value="8">🤞🏼 Счастливчик</option><option value="9">🥷🏻 Шпион</option><option value="10">🔪 Маньяк</option><option value="11">👨🏼‍💼 Адвокат</option><option value="12">👮🏼 Сержант</option><option value="13">🤵🏻‍♀️ Жена Дона</option><option value="14">🧨 Террорист</option><option value="15">🧑🏼‍💼 Президент</option><option value="16">🕶 Телохранитель</option><option value="17">🤩 Фанат</option><option value="18">📸 Папарацци</option><option value="19">👨🏼‍🏫 Профессор</option><option value="20">🧑🏼‍🎓 Студент</option><option value="21">🧑🏼‍⚕️ Интерн</option><option value="22">🦹🏼 Смертник</option><option value="23">🍷 Бармен</option><option value="24">🎙 Журналист</option>                    </select>
+                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                </div>
+                </div>
+            </div>
+    </div>
+</div>
+<div class="card mb-5 mb-xl-10">
+    <div class="card-header cursor-pointer">
+        <div class="card-title m-0">
+            <h3 class="fw-bold m-0">Привязать жизни других ролей</h3>
+        </div>
+    </div>
+    <div class="collapse show">
+        <div class="card-body border-top p-9" data-select2-id="select2-data-142-5isn">
+            <div class="row mb-6" data-select2-id="select2-data-372-rz5x">
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Роли, жизнь которых привязана к этой роли
+                <span class="ms-1" data-bs-toggle="tooltip" title="Роли, указанные в этом поле, умрут сразу же вслед за вашей созданной ролью после её смерти. Настройка не взаимна: созданная роль не умрёт, если одна из указанных ролей умрёт.">
+                    <i class="ki-duotone ki-information-5 fs-6">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                    </i></span>
+                </label>
+                <div class="col-lg-4 fv-row fv-plugins-icon-container" data-select2-id="select2-data-371-qh3l">
+                    <select class="form-select form-select-solid" name="connectedLivesRoles[]" data-kt-repeater="select2" data-placeholder="Список ролей" data-allow-clear="true" multiple="multiple">
+                        <option></option>
+                        <option value="0">👨🏼‍🌾 Мирный житель</option><option value="1">🤵🏻‍♂️ Дон</option><option value="2">🤵🏼 Мафия</option><option value="3">🕵🏼 Комиссар</option><option value="4">👨🏼‍⚕️ Доктор</option><option value="5">💃🏼 Любовница</option><option value="6">🧙🏼‍♂️ Бомж</option><option value="7">🤦🏼‍♂️ Самоубийца</option><option value="8">🤞🏼 Счастливчик</option><option value="9">🥷🏻 Шпион</option><option value="10">🔪 Маньяк</option><option value="11">👨🏼‍💼 Адвокат</option><option value="12">👮🏼 Сержант</option><option value="13">🤵🏻‍♀️ Жена Дона</option><option value="14">🧨 Террорист</option><option value="15">🧑🏼‍💼 Президент</option><option value="16">🕶 Телохранитель</option><option value="17">🤩 Фанат</option><option value="18">📸 Папарацци</option><option value="19">👨🏼‍🏫 Профессор</option><option value="20">🧑🏼‍🎓 Студент</option><option value="21">🧑🏼‍⚕️ Интерн</option><option value="22">🦹🏼 Смертник</option><option value="23">🍷 Бармен</option><option value="24">🎙 Журналист</option><option value="104">👻 Привидение</option>                    </select>
+                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                </div>
+                </div>
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label fw-semibold fs-6">Уведомление о привязке
+                <span class="ms-1" data-bs-toggle="tooltip" title="Сообщение о привязке к другой роли, которое получат роли, указанные выше, в начале игры">
+                    <i class="ki-duotone ki-information-5 fs-6">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                    </i></span>
+                </label>
+                <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                    <input type="text" name="connectedLivesRolesText" class="form-control form-control-lg form-control-solid" maxlength="120" placeholder="Например: Вы умрёте, если {actor_username} умрёт. Берегите его!" value=""/>
+                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                </div>
+                </div>
+            <div class="row mb-6">
+                <label class="col-lg-4 col-form-label required fw-semibold fs-6">Уведомление о смерти привязанной роли
+                <span class="ms-1" data-bs-toggle="tooltip" title="Сообщение в общем чате при смерти привязанной роли. Переменные {actor_role} и {actor_username} принадлежат к умершей созданной роли. {victim_role} и {victim_username} — к умершей привязанной роли.">
+                    <i class="ki-duotone ki-information-5 fs-6">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                    </i></span>
+                </label>
+                <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                    <input type="text" name="connectedLivesDeathText" class="form-control form-control-lg form-control-solid" maxlength="120" placeholder="Например: {actor_role} {actor_username} умер. {victim_role} {victim_username} не выдержал этого и ушёл с ним!" value=""/>
+                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                </div>
+                </div>
+            </div>
+    </div>
+</div>]]>*/</style>
+<div class="card mb-5 mb-xl-10">
+    <div class="card-header cursor-pointer">
+        <div class="card-title m-0">
+            <h3 class="fw-bold m-0">Настройка ночных действий</h3>
+        </div>
+    </div>
+    <div class="collapse show">
+        <div class="card-body border-top p-9" data-select2-id="select2-data-142-5isn">
+            
+            <div id="countfields" data-countfields="1"></div>            
+            <div id="kt_form_action_repeat">
+                <div class="form-group">
+                    <div data-repeater-list="data">
+                                                
+                        <div data-repeater-item="">
+                            <div class="row mb-6">
+                                <label class="col-lg-4 col-form-label required fw-semibold fs-6">Имя действия</label>
+                                <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                    <input type="text" name="data[0][Title]" class="form-control form-control-lg form-control-solid" data-kt-repeater="maxlength" placeholder="Например, Убить или Проверить" maxlength="25" value=""/>
+                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                </div>
+                                </div>
+                            <div class="row mb-6" data-select2-id="select2-data-372-rz5x">
+                                <label class="col-lg-4 col-form-label required fw-semibold fs-6">Вид действия
+                                <span class="ms-1" data-bs-toggle="tooltip" title="Сильно заглушить — Такое же глушение, как и у Жены Дона. Никто и ничто не сможет остановить это глушение.">
+                                    <i class="ki-duotone ki-information-5 fs-6">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i></span>
+                                </label>
+                                <div class="col-lg-4 fv-row fv-plugins-icon-container" data-select2-id="select2-data-371-qh3l">
+                                    <select class="form-select form-select-solid" name="data[0][TypeAction]" data-kt-repeater="select2" data-hide-search="true" data-placeholder="Вид действия">
+                                        <option></option>
+                                                                                <option value="kill">Убить</option>
+                                        <option value="cured">Вылечить</option>
+                                        <option value="jamming">Заглушить</option>
+                                        <option value="force_jamming">Сильно заглушить</option>
+                                        <option value="move" selected="selected">Пустой ход</option>
+                                    </select>
+                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                </div>
+                                </div>
+                            <div class="row mb-6" data-select2-id="select2-data-372-rz5x">
+                                <label class="col-lg-4 col-form-label fw-semibold fs-6">Роли, которые могут быть подвержены влиянию этого действия</label>
+                                <div class="col-lg-4 fv-row fv-plugins-icon-container" data-select2-id="select2-data-371-qh3l">
+                                    <select class="form-select form-select-solid" name="data[0][influence_roles]" data-kt-repeater="select2" data-placeholder="Список ролей" data-allow-clear="true" multiple="multiple">
+                                        <option></option>
+                                        <option value="0">👨🏼‍🌾 Мирный житель</option><option value="1">🤵🏻‍♂️ Дон</option><option value="2">🤵🏼 Мафия</option><option value="3">🕵🏼 Комиссар</option><option value="4">👨🏼‍⚕️ Доктор</option><option value="5">💃🏼 Любовница</option><option value="6">🧙🏼‍♂️ Бомж</option><option value="7">🤦🏼‍♂️ Самоубийца</option><option value="8">🤞🏼 Счастливчик</option><option value="9">🥷🏻 Шпион</option><option value="10">🔪 Маньяк</option><option value="11">👨🏼‍💼 Адвокат</option><option value="12">👮🏼 Сержант</option><option value="13">🤵🏻‍♀️ Жена Дона</option><option value="14">🧨 Террорист</option><option value="15">🧑🏼‍💼 Президент</option><option value="16">🕶 Телохранитель</option><option value="17">🤩 Фанат</option><option value="18">📸 Папарацци</option><option value="19">👨🏼‍🏫 Профессор</option><option value="20">🧑🏼‍🎓 Студент</option><option value="21">🧑🏼‍⚕️ Интерн</option><option value="22">🦹🏼 Смертник</option><option value="23">🍷 Бармен</option><option value="24">🎙 Журналист</option><option value="104">👻 Привидение</option>                             </select>
+                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                </div>
+                                </div>
+                            <div class="row mb-6">
+                                                                <label class="col-lg-4 col-form-label fw-semibold fs-6">Изменить вид списка ролей, на которых работает ход, на чёрный список
+                                <span class="ms-1" data-bs-toggle="tooltip" title="Вы будете указывать не «Роли, которые могут быть подвержены влиянию этого действия», а «Роли, которые НЕ могут быть подвержены влиянию этого действия»">
+                                    <i class="ki-duotone ki-information-5 fs-6">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i></span>
+                                </label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <div class="form-check form-check-solid form-switch form-check-custom fv-row">
+                                        <input class="form-check-input w-45px h-30px" name="data[0][is_influence_blacklist]" type="checkbox" id="is_influence_blacklist_0" checked="checked"/>
+                                        <label class="form-check-label" for="is_influence_blacklist_0"></label>
+                                    </div>
+                                </div>
+                                </div>
+                            <div class="row mb-6" data-select2-id="select2-data-372-rz5x">
+                                <label class="col-lg-4 col-form-label fw-semibold fs-6">Роли, которые могут заглушить это действие</label>
+                                <div class="col-lg-4 fv-row fv-plugins-icon-container" data-select2-id="select2-data-371-qh3l">
+                                    <select class="form-select form-select-solid" name="data[0][jamming_roles]" data-kt-repeater="select2" data-placeholder="Список ролей" data-allow-clear="true" multiple="multiple">
+                                        <option></option>
+                                        <option value="0">👨🏼‍🌾 Мирный житель</option><option value="1">🤵🏻‍♂️ Дон</option><option value="2">🤵🏼 Мафия</option><option value="3">🕵🏼 Комиссар</option><option value="4">👨🏼‍⚕️ Доктор</option><option value="5">💃🏼 Любовница</option><option value="6">🧙🏼‍♂️ Бомж</option><option value="7">🤦🏼‍♂️ Самоубийца</option><option value="8">🤞🏼 Счастливчик</option><option value="9">🥷🏻 Шпион</option><option value="10">🔪 Маньяк</option><option value="11">👨🏼‍💼 Адвокат</option><option value="12">👮🏼 Сержант</option><option value="13">🤵🏻‍♀️ Жена Дона</option><option value="14">🧨 Террорист</option><option value="15">🧑🏼‍💼 Президент</option><option value="16">🕶 Телохранитель</option><option value="17">🤩 Фанат</option><option value="18">📸 Папарацци</option><option value="19">👨🏼‍🏫 Профессор</option><option value="20">🧑🏼‍🎓 Студент</option><option value="21">🧑🏼‍⚕️ Интерн</option><option value="22">🦹🏼 Смертник</option><option value="23">🍷 Бармен</option><option value="24">🎙 Журналист</option><option value="104">👻 Привидение</option>                           </select>
+                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                </div>
+                                </div>
+                            <div class="row mb-6">
+                                                                <label class="col-lg-4 col-form-label fw-semibold fs-6">Изменить вид списка ролей, которые могут заглушить, на чёрный список
+                                <span class="ms-1" data-bs-toggle="tooltip" title="Вы будете указывать не «Роли, которые могут заглушить это действие», а «Роли, которые НЕ могут заглушить это действие»">
+                                    <i class="ki-duotone ki-information-5 fs-6">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i></span>
+                                </label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <div class="form-check form-check-solid form-switch form-check-custom fv-row">
+                                        <input class="form-check-input w-45px h-30px" name="data[0][is_jamming_blacklist]" type="checkbox" id="is_jamming_blacklist_0" checked="checked"/>
+                                        <label class="form-check-label" for="is_jamming_blacklist_0"></label>
+                                    </div>
+                                </div>
+                                </div>
+                            <div class="row mb-4">
+                                <label class="col-lg-4 col-form-label fw-semibold fs-6">Сколько целей можно выбрать
+                                <span class="ms-1" data-bs-toggle="tooltip" title="Сколько жертв сможет выбрать роль за 1 ночь">
+                                    <i class="ki-duotone ki-information-5 fs-6">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i></span>
+                                </label>
+                                <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                    <div class="position-relative w-md-300px" data-kt-dialer="true" data-kt-dialer-min="1" data-kt-dialer-max="3" data-kt-dialer-step="1">
+                                        <button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 start-0" data-kt-dialer-control="decrease">
+                                            <i class="ki-duotone ki-minus-square fs-2"><span class="path1"></span><span class="path2"></span></i>
+                                        </button>
+                                        <input type="text" class="form-control form-control-solid border-0 ps-12" data-kt-dialer-control="input" placeholder="Количество игроков" name="data[0][CountVictims]" value="1" />
+                                        <button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 end-0" data-kt-dialer-control="increase">
+                                            <i class="ki-duotone ki-plus-square fs-2"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                                        </button>
+                                        </div>
+                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                </div>
+                                </div>
+                            <div class="row mb-4">
+                                <label class="col-lg-4 col-form-label fw-semibold fs-6">Перерыв в выборе игрока
+                                <span class="ms-1" data-bs-toggle="tooltip" title="Через сколько ночей роль сможет выбрать того же самого игрока. 0 убирает ограничение. В настоящий момент можно ввести значение не выше 1.">
+                                    <i class="ki-duotone ki-information-5 fs-6">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i></span>
+                                </label>
+                                <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                    <div class="position-relative w-md-300px" data-kt-dialer="true" data-kt-dialer-min="0" data-kt-dialer-max="1" data-kt-dialer-step="1">
+                                        <button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 start-0" data-kt-dialer-control="decrease">
+                                            <i class="ki-duotone ki-minus-square fs-2"><span class="path1"></span><span class="path2"></span></i>
+                                        </button>
+                                        <input type="text" class="form-control form-control-solid border-0 ps-12" data-kt-dialer-control="input" placeholder="Перерыв в действии" name="data[0][PeriodicityMoves]" value="1" />
+                                        <button type="button" class="btn btn-icon btn-active-color-gray-700 position-absolute translate-middle-y top-50 end-0" data-kt-dialer-control="increase">
+                                            <i class="ki-duotone ki-plus-square fs-2"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                                        </button>
+                                        </div>
+                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                </div>
+                                </div>
+                                <style>/*<![CDATA[
+                            <div class="row mb-4">
+                                <label class="col-lg-4 col-form-label fw-semibold fs-6">Шанс успешного выполнения действия (в процентах)</label>
+                                <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                    <input type="number" name="data[0][ChanceSuccess]" class="form-control form-control-lg form-control-solid" maxlength="3" placeholder="Шанс в процентах" value="100"/>
+                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                </div>
+                                </div>
+                            <div class="row mb-6">
+                                                                <label class="col-lg-4 col-form-label fw-semibold fs-6">Эффект Бармена
+                                <span class="ms-1" data-bs-toggle="tooltip" title="Роль, подверженная этому действию, на следующем голосовании проголосует за случайного игрока">
+                                    <i class="ki-duotone ki-information-5 fs-6">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i></span>
+                                </label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <div class="form-check form-check-solid form-switch form-check-custom fv-row">
+                                        <input class="form-check-input w-45px h-30px" name="data[0][RandomVoteDayTarget]" type="checkbox" id="RandomVoteDayTarget_0"/>
+                                        <label class="form-check-label" for="RandomVoteDayTarget_0"></label>
+                                    </div>
+                                </div>
+                                </div>]]>*/</style>
+                            <div class="row mb-6" data-select2-id="select2-data-372-rz5x">
+                                <label class="col-lg-4 col-form-label fw-semibold fs-6">При успешном действии изменить роль на
+                                <span class="ms-1" data-bs-toggle="tooltip" title="Роль будет изменена только в том случае, если этой роли нет в игре (за исключением Мирного жителя, Мафии, Счастливчика, Сержанта и Интерна, которых может быть несколько).">
+                                    <i class="ki-duotone ki-information-5 fs-6">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i></span>
+                                </label>
+                                <div class="col-lg-4 fv-row fv-plugins-icon-container" data-select2-id="select2-data-371-qh3l">
+                                    <select class="form-select form-select-solid" name="data[0][SuccessEditRole]"  data-placeholder="Роль" data-allow-clear="true">
+                                        <option></option>
+                                        <option value="-1" selected="selected">Не менять</option><option value="-2">Роль жертвы</option><option value="0">👨🏼‍🌾 Мирный житель</option><option value="1">🤵🏻‍♂️ Дон</option><option value="2">🤵🏼 Мафия</option><option value="3">🕵🏼 Комиссар</option><option value="4">👨🏼‍⚕️ Доктор</option><option value="5">💃🏼 Любовница</option><option value="6">🧙🏼‍♂️ Бомж</option><option value="7">🤦🏼‍♂️ Самоубийца</option><option value="8">🤞🏼 Счастливчик</option><option value="9">🥷🏻 Шпион</option><option value="10">🔪 Маньяк</option><option value="11">👨🏼‍💼 Адвокат</option><option value="12">👮🏼 Сержант</option><option value="13">🤵🏻‍♀️ Жена Дона</option><option value="14">🧨 Террорист</option><option value="15">🧑🏼‍💼 Президент</option><option value="16">🕶 Телохранитель</option><option value="17">🤩 Фанат</option><option value="18">📸 Папарацци</option><option value="19">👨🏼‍🏫 Профессор</option><option value="20">🧑🏼‍🎓 Студент</option><option value="21">🧑🏼‍⚕️ Интерн</option><option value="22">🦹🏼 Смертник</option><option value="23">🍷 Бармен</option><option value="24">🎙 Журналист</option><option value="104">👻 Привидение</option>                                    </select>
+                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-6">
+                                <label class="col-lg-4 col-form-label required fw-semibold fs-6">Текст действия
+                                <span class="ms-1" data-bs-toggle="tooltip" title="Текст, который отобразится в сообщении при выборе жертвы">
+                                    <i class="ki-duotone ki-information-5 fs-6">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i></span>
+                                </label>
+                                <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                    <input type="text" name="data[0][TextSelect]" class="form-control form-control-lg form-control-solid" maxlength="120" placeholder="Например: Выбери игрока, которого вылечишь этой тёмной ночью!" value=""/>
+                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                </div>
+                                </div>
+                            <div class="row mb-6">
+                                <label class="col-lg-4 col-form-label fw-semibold fs-6">Сообщение успешно выполненного действия в конце ночи в общем чате
+                                <span class="ms-1" data-bs-toggle="tooltip" title="Сообщение, которое отправится в общий чат с игрой после успешного выполнения действия">
+                                    <i class="ki-duotone ki-information-5 fs-6">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i></span>
+                                </label>
+                                <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                    <input type="text" name="data[0][TextActionChat]" class="form-control form-control-lg form-control-solid" maxlength="120" value=""/>
+                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                </div>
+                                </div>
+                            <div class="row mb-6">
+                                <label class="col-lg-4 col-form-label fw-semibold fs-6">Сообщение провально выполненного действия в конце ночи в общем чате
+                                <span class="ms-1" data-bs-toggle="tooltip" title="Сообщение, которое отправится в общий чат с игрой после провального выполнения действия">
+                                    <i class="ki-duotone ki-information-5 fs-6">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i></span>
+                                </label>
+                                <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                    <input type="text" name="data[0][TextActionChatFail]" class="form-control form-control-lg form-control-solid" maxlength="120" value=""/>
+                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                </div>
+                                </div>
+                            <div class="row mb-6">
+                                <label class="col-lg-4 col-form-label fw-semibold fs-6">Сообщение об успешном действии жертве
+                                <span class="ms-1" data-bs-toggle="tooltip" title="Сообщение, которое придёт жертве, когда над ней успешно выполнено действие">
+                                    <i class="ki-duotone ki-information-5 fs-6">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i></span>
+                                </label>
+                                <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                    <input type="text" name="data[0][TextSuccessTarget]" class="form-control form-control-lg form-control-solid" maxlength="120" value=""/>
+                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                </div>
+                                </div>
+                            <div class="row mb-6">
+                                <label class="col-lg-4 col-form-label fw-semibold fs-6">Сообщение о провальном действии жертве
+                                <span class="ms-1" data-bs-toggle="tooltip" title="Сообщение, которое придёт жертве, когда над не выполнено действие">
+                                    <i class="ki-duotone ki-information-5 fs-6">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i></span>
+                                </label>
+                                <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                    <input type="text" name="data[0][TextFailTarget]" class="form-control form-control-lg form-control-solid" maxlength="120" value=""/>
+                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-6">
+                                <label class="col-lg-4 col-form-label fw-semibold fs-6">Сообщение об успешном действии исполнителю
+                                <span class="ms-1" data-bs-toggle="tooltip" title="Сообщение, которое придёт исполнителю, когда действие было успешно выполнено">
+                                    <i class="ki-duotone ki-information-5 fs-6">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i></span>
+                                </label>
+                                <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                    <input type="text" name="data[0][TextSuccessActor]" class="form-control form-control-lg form-control-solid" maxlength="120" value=""/>
+                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                </div>
+                                </div>
+                            <div class="row mb-6">
+                                <label class="col-lg-4 col-form-label fw-semibold fs-6">Сообщение о провальном действии исполнителю
+                                <span class="ms-1" data-bs-toggle="tooltip" title="Сообщение, которое придёт исполнителю, когда действие не было выполнено">
+                                    <i class="ki-duotone ki-information-5 fs-6">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i></span>
+                                </label>
+                                <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                    <input type="text" name="data[0][TextFailActor]" class="form-control form-control-lg form-control-solid" maxlength="120" value=""/>
+                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-6">
+                                <label class="col-lg-4 col-form-label required fw-semibold fs-6">Текст о выполнении хода в личных сообщениях
+                                <span class="ms-1" data-bs-toggle="tooltip" title="Текст, который будет отображён при выборе игрока">
+                                    <i class="ki-duotone ki-information-5 fs-6">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i></span>
+                                </label>
+                                <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                    <input type="text" name="data[0][TextMovePrivate]" class="form-control form-control-lg form-control-solid" maxlength="120" placeholder="Например: Ты отправился лечить {victim_username}" value=""/>
+                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                </div>
+                                </div>
+                            <div class="row mb-6">
+                                <label class="col-lg-4 col-form-label required fw-semibold fs-6">Сообщение о выполнении хода в общем чате
+                                <span class="ms-1" data-bs-toggle="tooltip" title="Сообщение, которое будет отправлено в чат при выборе игрока">
+                                    <i class="ki-duotone ki-information-5 fs-6">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i></span>
+                                </label>
+                                <div class="col-lg-4 fv-row fv-plugins-icon-container">
+                                    <input type="text" name="data[0][TextMoveChat]" class="form-control form-control-lg form-control-solid" maxlength="120" placeholder="Например: {actor_role} уже ждёт кого-то в гости..." value=""/>
+                                    <div class="form-text"><b>В данных сообщениях выше можно использовать следующие переменные</b><br/>
+                                    {actor_role} — роль исполнителя действия<br/>
+                                    {actor_username} — имя исполнителя действия<br/>
+                                    {victim_role} — роль жертвы<br/>
+                                    {victim_username} — имя жертвы<br/>
+                                    {emoji_0} — премиум-смайлик в сообщении, где 0 — ID премиум-смайлика</div>
+                                    <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                                </div>
+                                </div>
+                            <div class="row mb-0">
+                                <label class="col-lg-4 col-form-label fw-semibold fs-6"></label>
+                                <div class="col-lg-8 d-flex align-items-center">
+                                    <a href="javascript:;" data-repeater-delete="" class="btn btn-sm btn-light-danger mt-3 mt-md-8">
+                                        <i class="ki-duotone ki-trash fs-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i> Убрать
+                                    </a>
+                                </div>
+                                </div>
+                            <div class="separator my-10"></div>
+                        </div>
+                                            </div>
+                </div>
+                <div class="form-group mt-5" id="button_add_action">
+                    <a href="javascript:;" data-repeater-create="" class="btn btn-light-primary">
+                        <i class="ki-duotone ki-plus fs-3"></i> Добавить
+                    </a>
+                </div>
+                               
+                    <input type="submit" class="btn btn-light-primary" value="Создать роль"/>
+ 
+                </div>
+            </div>
+    </div>
+</div>
+
+<textarea id="output" style="  padding: 10px;
+  background-color: #bff6ff;  width: 100%;
+  height: 200px;"></textarea>
+</form>
+
+  <script src="https://vlsmet.github.io/MafiosoOfficialChat/view/mafioso.js"></script>
+  
+  <script><![CDATA[
+    document.getElementById("kt_edit_role_form").onsubmit = function(e) {
+    e.preventDefault();
+
+    var formData = new FormData(this);
+    var data = {};
+    var output = "";
+    
+    console.log(formData);
+	
+    formData.forEach(function(value, key) {
+      if(output.length !== 0) output += "&";
+      if (data[key]) {
+        output += key + "=" + encodeURIComponent(data[key] = [].concat(data[key], value));
+      } else {
+        output += key + "=" + encodeURIComponent(data[key] = value);
+      }
+    });
+    
+    
+    document.getElementById("output").value=output;
+    console.log(data);
+    
+    var role_actions = [];
+    
+    for(var i=0;formData.get("data["+i+"][Title]");i++){
+	  role_actions.push(
+	    new MafiosoApi.RoleAction(
+          formData.get("data["+i+"][Title]"),
+          (function(name){
+			if(name == "kill") return new MafiosoApi.RoleActionTypeKill();
+			if(name == "cured") return new MafiosoApi.RoleActionTypeHealing();
+			if(name == "jamming") return new MafiosoApi.RoleActionTypeFreeze(false);
+			if(name == "force_jamming") return new MafiosoApi.RoleActionTypeFreeze(true);
+			if(name == "move") return new MafiosoApi.RoleActionTypeEmpty();
+			return null;
+		  })(formData.get("data["+i+"][TypeAction]")),
+		  formData.get("data["+i+"][is_influence_blacklist][]") == "on" ?
+		    new MafiosoApi.RoleListTypeBlackList(formData.getAll("data["+i+"][influence_roles][]").map(function(x){return parseInt(x, 10)})):
+		    new MafiosoApi.RoleListTypeWhiteList(formData.getAll("data["+i+"][influence_roles][]").map(function(x){return parseInt(x, 10)})),
+		  formData.get("data["+i+"][is_jamming_blacklist][]") == "on" ?
+		    new MafiosoApi.RoleListTypeBlackList(formData.getAll("data["+i+"][jamming_roles][]").map(function(x){return parseInt(x, 10)})):
+		    new MafiosoApi.RoleListTypeWhiteList(formData.getAll("data["+i+"][jamming_roles][]").map(function(x){return parseInt(x, 10)})),
+		  formData.get("data["+i+"][CountVictims]"),
+		  formData.get("data["+i+"][PeriodicityMoves]"),
+		  new MafiosoApi.RoleActionProcess(
+		    formData.get("data["+i+"][TextSelect]"),
+		    formData.get("data["+i+"][TextMovePrivate]"),
+		    formData.get("data["+i+"][TextMoveChat]")
+		  ),
+		  new MafiosoApi.RoleActionSuccess(
+		    (function(name){
+		      if(!name || name == "-1") return null;
+		      if(name == "-2") return new MafiosoApi.RoleSwitchToVictimRole();
+		      return new MafiosoApi.RoleSwitchToRoleId(name);
+		      
+		    })(formData.get("data["+i+"][SuccessEditRole]")),
+		    formData.get("data["+i+"][TextActionChat]"),
+		    formData.get("data["+i+"][TextSuccessTarget]"),
+		    formData.get("data["+i+"][TextSuccessActor]")
+		  ),
+		  new MafiosoApi.RoleActionFailed(
+		    formData.get("data["+i+"][TextActionChatFail]"),
+		    formData.get("data["+i+"][TextFailTarget]"),
+		    formData.get("data["+i+"][TextFailActor]")
+		  )
+        )
+      );
+    }
+    
+    var role = new MafiosoApi.Role(
+      new MafiosoApi.RoleName(
+        formData.get("title_role"),
+         new MafiosoApi.Emoji(
+           formData.get("emoji_role"),
+           formData.get("custom_emoji")
+         )
+      ),
+      formData.get("description"),
+      (function(name){
+        if(name == "peace") return new MafiosoApi.RoleFractonPeace();
+        if(name == "mafia") return new MafiosoApi.RoleFractonMafia();
+        if(name == "neutral") return new MafiosoApi.RoleFractonNeutral();
+        if(name == "killer") return new MafiosoApi.RoleFractonKiller();
+        return null;
+      })(formData.get("fraction")),
+      formData.get("CashAward"),
+      formData.get("maxSpawnCountPlayers"),
+      formData.get("countVotesDay"),
+      formData.get("revengeKill") ? true : false,
+      formData.get("enableSpawn"),
+      formData.get("textSelectActs"),
+      new MafiosoApi.RoleActionSkip(
+        formData.get("textSkipActs"),
+        formData.get("messageSkipActs")
+      ),
+      role_actions
+    );
+    console.log(role);
+    document.getElementById("output").value=JSON.stringify(role.toData(0), null, 2);
+  };
+  ]]></script>
+		<!--end::Scrolltop-->
+		<!--begin::Javascript-->
+		<script>var hostUrl = "https://mafioso.miomoor.info/assets/";</script>
+		<!--begin::Global Javascript Bundle(mandatory for all pages)-->
+		<script src="https://mafioso.miomoor.info/assets/plugins/global/plugins.bundle.js"></script>
+		<script src="https://mafioso.miomoor.info/assets/js/scripts.bundle.js"></script>
+		<!--end::Global Javascript Bundle-->
+		<!--begin::Vendors Javascript(used for this page only)-->
+		
+        <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+        
+		<script src="https://mafioso.miomoor.info/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+		<script src="https://mafioso.miomoor.info/assets/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
+		
+		<script src="https://mafioso.miomoor.info/assets/js/widgets.bundle.js"></script>
+		<script src="https://mafioso.miomoor.info/assets/js/jquery.repeater.js"></script>
+		<script src="https://mafioso.miomoor.info/assets/js/custom/widgets.js"></script>
+		<script src="https://mafioso.miomoor.info/assets/js/custom/pages/group/general.js?2829"></script>
+		<script src="https://mafioso.miomoor.info/assets/js/custom/pages/group/validation_form.js?8681"></script>
+		<script src="https://mafioso.miomoor.info/assets/js/custom/pages/group/chat_history.js?1780"></script>
+		<script src="https://mafioso.miomoor.info/assets/plugins/global/plugins.bundle.js"></script>
+	</body>
+</html>
